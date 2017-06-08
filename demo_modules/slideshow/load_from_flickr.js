@@ -15,7 +15,7 @@ limitations under the License.
 
 'use strict';
 const debug = require('debug');
-const querystring = require('querystring');
+const querystring = require('demo_modules/querystring/index');
 const interfaces = require('demo_modules/slideshow/interfaces');
 const serverRequire = require('lib/server_require');
 const assert = require('lib/assert');

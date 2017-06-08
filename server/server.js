@@ -15,6 +15,16 @@ limitations under the License.
 
 'use strict';
 
+ require('app-module-path').addPath('.');
+ require('app-module-path').addPath('./lib');
+ require('app-module-path').addPath('./server');
+ require('app-module-path').addPath('./server/game');
+ require('app-module-path').addPath('./server/modules');
+ require('app-module-path').addPath('./server/monitoring');
+ require('app-module-path').addPath('./server/network');
+ require('app-module-path').addPath('./server/state');
+ require('app-module-path').addPath('./server/util');
+
 var PeerServer = require('peer').PeerServer;
 const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
@@ -53,7 +63,7 @@ const FLAG_DEFS = [
   {name: 'module', type: String, alias: 'm', multiple: true,
       description: 'Runs only the selected module or modules.'},
   {name: 'help', type: Boolean},
-  {name: 'port', type: Number, defaultValue: 3000},
+  {name: 'port', type: Number, defaultValue: 8080},
   {name: 'use_geometry', type: JSON.parse, defaultValue: null},
   {name: 'screen_width', type: Number, defaultValue: 1920},
   {name: 'layout_duration', type: Number},
@@ -61,7 +71,7 @@ const FLAG_DEFS = [
   {name: 'max_partitions', type: Number},
   {name: 'game_server_host', type: String, defaultValue: ''},
   {name: 'geometry_file', type: String},
-  {name: 'credential_dir', type: String},
+  {name: 'credential_dir', type: String, defaultValue: path.join(__dirname, '..', 'server/util')},
   {name: 'enable_monitoring', type: Boolean}
 ];
 let flags = commandLineArgs(FLAG_DEFS);

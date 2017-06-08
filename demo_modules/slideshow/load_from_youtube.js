@@ -73,7 +73,7 @@ class LoadYouTubePlaylistServerStrategy extends interfaces.ServerLoadStrategy {
         paginationToken: response.nextPageToken
       };
     }, (error) => {
-      debug('Failed to download more youtube content! Delay a bit...');
+      debug('Failed to download more youtube content! Delay a bit...' + JSON.stringify(error));
       return Promise.delay(Math.random() * 4000 + 1000).then(() => this.loadMoreContent(opt_paginationToken));
     });
   }
@@ -104,6 +104,10 @@ class LoadYouTubePlaylistClientStrategy extends interfaces.ClientLoadStrategy {
       let player = new YT.Player(container, {
         width: this.surface.container.offsetWidth,
         height: this.surface.container.offsetHeight,
+        //width:'3840px',
+        //height:'2860px',
+        // top:'-1920px',
+        // left:'-1080px',
         videoId: content.videoId,
         playerVars: {
           listType: this.config.playThroughPlaylist ? 'playlist' : undefined,

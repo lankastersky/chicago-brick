@@ -146,10 +146,14 @@ class FullscreenClientDisplayStrategy extends interfaces.ClientDisplayStrategy {
         switch(s) {
           case 'stretch':
             content.style.position = 'absolute';
-            content.style.top = 0;
-            content.style.left = 0;
-            content.style.width = '100%';
-            content.style.height = '100%';
+            // content.style.top = 0;
+            // content.style.left = 0;
+            // content.style.width = '100%';
+            // content.style.height = '100%';
+             content.style.left = -this.surface.virtualRect.x + 'px';
+             content.style.top = -this.surface.virtualRect.y + 'px';
+             content.style.width = this.surface.wallRect.w + 'px';
+             content.style.height = this.surface.wallRect.h + 'px';
             break;
           case 'full':
             content.style.display = 'block';
@@ -163,6 +167,11 @@ class FullscreenClientDisplayStrategy extends interfaces.ClientDisplayStrategy {
         }
         // Add content.
         this.surface.container.appendChild(content);
+        this.surface.container.style.left = 0;
+        this.surface.container.style.top = 0;
+        this.surface.container.style.width = this.surface.virtualRect.w + 'px';
+        this.surface.container.style.height = this.surface.virtualRect.h + 'px';
+        this.surface.container.style.overflow = 'hidden';
       }).catch(err => {
         info.innerHTML += '<br>';
         info.innerHTML += `<span style="color:red">Error! ${err}</span>`;

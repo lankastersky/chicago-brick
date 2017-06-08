@@ -43,6 +43,7 @@ const FallingDisplayStrategy = require('demo_modules/slideshow/falling_display')
 // These methods convert a load or display config to specific server or client
 // strategies. New strategies should be added to these methods.
 let parseServerLoadStrategy = (loadConfig) => {
+  debug('loadConfig: ' + JSON.stringify(loadConfig));
   if (loadConfig.drive) {
     return new LoadFromDriveStrategy.Server(loadConfig.drive);
   } else if (loadConfig.youtube) {
@@ -143,7 +144,9 @@ class ImageServer extends ModuleInterface.Server {
 class ImageClient extends ModuleInterface.Client {
   willBeShownSoon(container, deadline) {
     const Surface = require('client/surface/surface');
+    //const CanvasSurface = require('client/surface/canvas_surface');
     this.surface = new Surface(container, wallGeometry);
+    this.canvas = this.surface.context;
     return new Promise((resolve, reject) => {
       debug('Waiting for network init...');
       network.emit('req_init');

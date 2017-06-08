@@ -144,6 +144,42 @@
         }
       }
     },
+    {
+      "name": "slideshow-drive",
+      "path": "demo_modules/slideshow/slideshow.js",
+      "title": "Slideshow",
+      "config": {
+        "load": {
+          "drive": {
+            "folderId": "0B78-PNKfF7GlSFNUZjdLelVha00"
+          }
+        },
+        "display": {
+          "fullscreen": {
+            "period": 3000,
+          }
+        }
+      }
+    },
+    {
+      "name": "slideshow-youtube",
+      "path": "demo_modules/slideshow/slideshow.js",
+      "title": "Slideshow",
+      "config": {
+        "load": {
+          "youtube": {
+            "playlistId": "PLu3gxREDmr9qUxoH3mS8DZqK56eb6fVZU",
+            "playThroughPlaylist": true,
+            "sync": true
+          }
+        },
+        "display": {
+          "fullscreen": {
+            "period": 0,
+          }
+        }
+      }
+    },
   ],
   "playlist": [
     {

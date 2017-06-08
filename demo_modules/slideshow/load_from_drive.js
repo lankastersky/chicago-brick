@@ -45,6 +45,7 @@ class LoadFromDriveServerStrategy extends interfaces.ServerLoadStrategy {
       this.config.credentials = client.credentials;
       this.driveClient = client.googleapis.drive('v2');
     }, (e) => {
+      debug('error: ' + JSON.stringify(e));
       throw new Error('Error initializing Drive Client', e);
     });
   }
@@ -61,6 +62,7 @@ class LoadFromDriveServerStrategy extends interfaces.ServerLoadStrategy {
         resolve(response);
       })
     ).then((response) => {
+      debug('Response: ' + JSON.stringify(response));
       debug('Downloaded ' + response.items.length + ' more content ids.');
       return {
         content: response.items.map((i) => i.id),
@@ -68,7 +70,7 @@ class LoadFromDriveServerStrategy extends interfaces.ServerLoadStrategy {
         paginationToken: response.nextPageToken
       };
     }, (error) => {
-      debug('Failed to download more drive content! Delay a bit...');
+      debug('Failed to download more drive content! Delay a bit... ' + JSON.stringify(error));
       return Promise.delay(Math.random() * 4000 + 1000).then(() => this.loadMoreContent(opt_paginationToken));
     });
   }

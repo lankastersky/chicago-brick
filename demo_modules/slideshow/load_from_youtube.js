@@ -161,7 +161,7 @@ class LoadYouTubePlaylistClientStrategy extends interfaces.ClientLoadStrategy {
           // We can't always seek, because the HTML5 video spec doesn't specify
           // the granuality of seeking, and browsers round by as much as 250ms 
           // in practice!
-          if (Math.abs(actualTime - correctTime) > 3000) {
+          if (Math.abs(actualTime - correctTime) > 300) {
             video.lastSeekTime = video.lastSeekTime || time;
             // Don't seek too often! YouTube doesn't like that!
             if (time - video.lastSeekTime > 3000) {

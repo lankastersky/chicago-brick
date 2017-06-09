@@ -164,7 +164,7 @@ class LoadYouTubePlaylistClientStrategy extends interfaces.ClientLoadStrategy {
           if (Math.abs(actualTime - correctTime) > 300) {
             video.lastSeekTime = video.lastSeekTime || time;
             // Don't seek too often! YouTube doesn't like that!
-            if (time - video.lastSeekTime > 3000) {
+            if (time - video.lastSeekTime > 300) {
               debug('seek', actualTime, correctTime);
               player.seekTo(correctTime / 1000.0, true);
               video.lastSeekTime = time;

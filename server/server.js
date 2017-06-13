@@ -65,7 +65,7 @@ const FLAG_DEFS = [
   {name: 'help', type: Boolean},
   {name: 'port', type: Number, defaultValue: 8080},
   {name: 'use_geometry', type: JSON.parse, defaultValue: null},
-  {name: 'screen_width', type: Number, defaultValue: 1920},
+  {name: 'screen_width', type: Number, defaultValue: 2560},
   {name: 'layout_duration', type: Number},
   {name: 'module_duration', type: Number},
   {name: 'max_partitions', type: Number},

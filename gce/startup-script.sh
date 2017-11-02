@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Based on https://github.com/GoogleCloudPlatform/nodejs-getting-started/tree/master/7-gce
 # [START startup]
 set -v
 
